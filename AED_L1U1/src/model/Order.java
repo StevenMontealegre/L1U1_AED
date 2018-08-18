@@ -1,14 +1,17 @@
 package model;
 
+import exceptions.ShortLongException;
+
 public class Order {
 
-	// MergeSort recursive method for integer values
+	// MERGESORT RECURSIVE METHOD
+	// Integer values version:
 
-	public static void integerMergeSort(int[] vector) {
+	public int[] integerMergeSort(int[] vector) throws ShortLongException {
 
 		int n = vector.length;
 		if (n < 2)
-			return;
+			throw new ShortLongException();
 		int mid = n / 2;
 		int left[] = new int[mid];
 		int right[] = new int[n - mid];
@@ -19,6 +22,7 @@ public class Order {
 		integerMergeSort(left);
 		integerMergeSort(right);
 		integerMerge(vector, left, right);
+		return vector;
 
 	}
 
@@ -50,11 +54,11 @@ public class Order {
 
 	// double values version:
 
-	public static void doubleMergeSort(double[] vector) {
+	public double[] doubleMergeSort(double[] vector) throws ShortLongException {
 
 		int n = vector.length;
 		if (n < 2)
-			return;
+			throw new ShortLongException();
 		int mid = n / 2;
 		double left[] = new double[mid];
 		double right[] = new double[n - mid];
@@ -65,6 +69,7 @@ public class Order {
 		doubleMergeSort(left);
 		doubleMergeSort(right);
 		doubleMerge(vector, left, right);
+		return vector;
 
 	}
 
