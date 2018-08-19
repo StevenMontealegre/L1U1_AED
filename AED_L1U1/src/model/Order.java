@@ -3,11 +3,20 @@ package model;
 import exceptions.ShortLongException;
 
 public class Order {
+	//
+	// private int[] orderedIntegerArray;
+	// private double[] orderedDoubleArray;
+	//
+	// public Order() {
+	// // TODO Auto-generated constructor stub
+	// orderedDoubleArray = new double[0];
+	// orderedIntegerArray = new int[0];
+	// }
 
 	// MERGESORT RECURSIVE METHOD
 	// Integer values version:
 
-	public int[] integerMergeSort(int[] vector) throws ShortLongException {
+	static void integerMergeSort(int[] vector) throws ShortLongException {
 
 		int n = vector.length;
 		if (n < 2)
@@ -22,7 +31,6 @@ public class Order {
 		integerMergeSort(left);
 		integerMergeSort(right);
 		integerMerge(vector, left, right);
-		return vector;
 
 	}
 
@@ -54,7 +62,7 @@ public class Order {
 
 	// double values version:
 
-	public double[] doubleMergeSort(double[] vector) throws ShortLongException {
+	static void doubleMergeSort(double[] vector) throws ShortLongException {
 
 		int n = vector.length;
 		if (n < 2)
@@ -69,7 +77,6 @@ public class Order {
 		doubleMergeSort(left);
 		doubleMergeSort(right);
 		doubleMerge(vector, left, right);
-		return vector;
 
 	}
 
@@ -98,4 +105,118 @@ public class Order {
 			k++;
 		}
 	}
+	// HEAPSORT RECURSIVE METHOD:
+	// For integer values:
+
+	static void integerHeapSort(int arr[]) {
+		int n = arr.length;
+
+		// Build heap (rearrange array)
+		for (int i = n / 2 - 1; i >= 0; i--)
+			integerHeap(arr, n, i);
+
+		// One by one extract an element from heap
+		for (int i = n - 1; i >= 0; i--) {
+			// Move current root to end
+			int temp = arr[0];
+			arr[0] = arr[i];
+			arr[i] = temp;
+
+			// call max heapify on the reduced heap
+			integerHeap(arr, i, 0);
+
+		}
+
+	}
+
+	// To heapify a subtree rooted with node i which is
+	// an index in arr[]. n is size of heap
+	public static void integerHeap(int arr[], int n, int i) {
+		int largest = i; // Initialize largest as root
+		int l = 2 * i + 1; // left = 2*i + 1
+		int r = 2 * i + 2; // right = 2*i + 2
+
+		// If left child is larger than root
+		if (l < n && arr[l] > arr[largest])
+			largest = l;
+
+		// If right child is larger than largest so far
+		if (r < n && arr[r] > arr[largest])
+			largest = r;
+
+		// If largest is not root
+		if (largest != i) {
+			int swap = arr[i];
+			arr[i] = arr[largest];
+			arr[largest] = swap;
+
+			// Recursively heapify the affected sub-tree
+			integerHeap(arr, n, largest);
+		}
+	}
+	// For double values:
+
+	static void doubleHeapSort(double arr[]) {
+		int n = arr.length;
+
+		// Build heap (rearrange array)
+		for (int i = n / 2 - 1; i >= 0; i--)
+			doubleHeap(arr, n, i);
+
+		// One by one extract an element from heap
+		for (int i = n - 1; i >= 0; i--) {
+			// Move current root to end
+			double temp = arr[0];
+			arr[0] = arr[i];
+			arr[i] = temp;
+
+			// call max heapify on the reduced heap
+			doubleHeap(arr, i, 0);
+
+		}
+
+	}
+
+	// To heapify a subtree rooted with node i which is
+	// an index in arr[]. n is size of heap
+	public static void doubleHeap(double arr[], int n, int i) {
+		int largest = i; // Initialize largest as root
+		int l = 2 * i + 1; // left = 2*i + 1
+		int r = 2 * i + 2; // right = 2*i + 2
+
+		// If left child is larger than root
+		if (l < n && arr[l] > arr[largest])
+			largest = l;
+
+		// If right child is larger than largest so far
+		if (r < n && arr[r] > arr[largest])
+			largest = r;
+
+		// If largest is not root
+		if (largest != i) {
+			double swap = arr[i];
+			arr[i] = arr[largest];
+			arr[largest] = swap;
+
+			// Recursively heapify the affected sub-tree
+			doubleHeap(arr, n, largest);
+		}
+	}
+
+	//
+	// public int[] getOrderedIntegerArray() {
+	// return orderedIntegerArray;
+	// }
+	//
+	// public void setOrderedIntegerArray(int[] orderedIntegerArray) {
+	// this.orderedIntegerArray = orderedIntegerArray;
+	// }
+	//
+	// public double[] getOrderedDoubleArray() {
+	// return orderedDoubleArray;
+	// }
+	//
+	// public void setOrderedDoubleArray(double[] orderedDoubleArray) {
+	// this.orderedDoubleArray = orderedDoubleArray;
+	// }
 }
