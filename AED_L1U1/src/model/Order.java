@@ -3,109 +3,74 @@ package model;
 import exceptions.ShortLongException;
 
 public class Order {
-	//
-	// private int[] orderedIntegerArray;
-	// private double[] orderedDoubleArray;
-	//
-	// public Order() {
-	// // TODO Auto-generated constructor stub
-	// orderedDoubleArray = new double[0];
-	// orderedIntegerArray = new int[0];
-	// }
+	private String result;
 
-	// MERGESORT RECURSIVE METHOD
+	public Order() {
+		// TODO Auto-generated constructor stub
+		setResult("");
+	}
+
+	// MERGESORT RECURSIVE
+	// METHOD-----------------------------------------------------------------------------------------
 	// Integer values version:
 
-	static void integerMergeSort(int[] vector) throws ShortLongException {
-
-		int n = vector.length;
-		if (n < 2)
-			throw new ShortLongException();
-		int mid = n / 2;
-		int left[] = new int[mid];
-		int right[] = new int[n - mid];
-		for (int i = 0; i < mid; i++)
-			left[i] = vector[i];
-		for (int i = mid; i < n; i++)
-			right[i - mid] = vector[i];
-		integerMergeSort(left);
-		integerMergeSort(right);
-		integerMerge(vector, left, right);
-
-	}
-
-	public static void integerMerge(int arr[], int left[], int right[]) {
-		int nL = left.length;
-		int nR = right.length;
-		int i = 0, j = 0, k = 0;
-		while (i < nL && j < nR) {
-			if (left[i] <= right[j]) {
-				arr[k] = left[i];
-				i++;
-			} else {
-				arr[k] = right[i];
-				j++;
+	public static int[] integerMergeSort(int[] n) {
+		int i = 1;
+		for (i = 1; i < n.length; i *= 2) {
+			for (int j = 0; j < n.length; j += i) {
+				int p = i >> 1;
+				integerMerge(n, j, j + p - 1, j + p, j + p + p - 1);
 			}
-			k++;
 		}
-		while (i < nL) {
-			arr[k] = left[i];
-			i++;
-			k++;
-		}
-		while (j < nR) {
-			arr[k] = right[j];
-			j++;
-			k++;
-		}
+		integerMerge(n, 0, i / 2 - 1, i / 2, n.length);
+		return n;
 	}
 
-	// double values version:
+	public static void integerMerge(int[] n, int a, int b, int c, int d) {
+		d = Math.min(d, n.length - 1);
+		int mer[] = new int[d - a + 1];
+		int idx = 0;
+		int or = a;
+		while (idx < mer.length)
+			if ((a > b ? false : (c > d ? true : n[a] <= n[c])))
+				mer[idx++] = n[a++];
+			else
+				mer[idx++] = n[c++];
 
-	static void doubleMergeSort(double[] vector) throws ShortLongException {
-
-		int n = vector.length;
-		if (n < 2)
-			throw new ShortLongException();
-		int mid = n / 2;
-		double left[] = new double[mid];
-		double right[] = new double[n - mid];
-		for (int i = 0; i < mid; i++)
-			left[i] = vector[i];
-		for (int i = mid; i < n; i++)
-			right[i - mid] = vector[i];
-		doubleMergeSort(left);
-		doubleMergeSort(right);
-		doubleMerge(vector, left, right);
-
+		for (int i = 0; i < mer.length; i++)
+			n[or + i] = mer[i];
 	}
+	// double values
+	// version:--------------------------------------------------------------------------------------
 
-	public static void doubleMerge(double arr[], double left[], double right[]) {
-		int nL = left.length;
-		int nR = right.length;
-		int i = 0, j = 0, k = 0;
-		while (i < nL && j < nR) {
-			if (left[i] <= right[j]) {
-				arr[k] = left[i];
-				i++;
-			} else {
-				arr[k] = right[i];
-				j++;
+	public static double[] doubleMergeSort(double[] n) {
+		int i = 1;
+		for (i = 1; i < n.length; i *= 2) {
+			for (int j = 0; j < n.length; j += i) {
+				int p = i >> 1;
+				doubleMerge(n, j, j + p - 1, j + p, j + p + p - 1);
 			}
-			k++;
 		}
-		while (i < nL) {
-			arr[k] = left[i];
-			i++;
-			k++;
-		}
-		while (j < nR) {
-			arr[k] = right[j];
-			j++;
-			k++;
-		}
+		doubleMerge(n, 0, i / 2 - 1, i / 2, n.length);
+		return n;
 	}
-	// HEAPSORT RECURSIVE METHOD:
+
+	public static void doubleMerge(double[] n, int a, double b, int c, int d) {
+		d = Math.min(d, n.length - 1);
+		double mer[] = new double[d - a + 1];
+		int idx = 0;
+		int or = a;
+		while (idx < mer.length)
+			if ((a > b ? false : (c > d ? true : n[a] <= n[c])))
+				mer[idx++] = n[a++];
+			else
+				mer[idx++] = n[c++];
+
+		for (int i = 0; i < mer.length; i++)
+			n[or + i] = mer[i];
+	}
+	// HEAPSORT RECURSIVE
+	// METHOD:--------------------------------------------------------------------------------------------
 	// For integer values:
 
 	static void integerHeapSort(int arr[]) {
@@ -154,7 +119,8 @@ public class Order {
 			integerHeap(arr, n, largest);
 		}
 	}
-	// For double values:
+	// For double
+	// values:-----------------------------------------------------------------------------------------------
 
 	static void doubleHeapSort(double arr[]) {
 		int n = arr.length;
@@ -203,20 +169,34 @@ public class Order {
 		}
 	}
 
-	//
-	// public int[] getOrderedIntegerArray() {
-	// return orderedIntegerArray;
-	// }
-	//
-	// public void setOrderedIntegerArray(int[] orderedIntegerArray) {
-	// this.orderedIntegerArray = orderedIntegerArray;
-	// }
-	//
-	// public double[] getOrderedDoubleArray() {
-	// return orderedDoubleArray;
-	// }
-	//
-	// public void setOrderedDoubleArray(double[] orderedDoubleArray) {
-	// this.orderedDoubleArray = orderedDoubleArray;
-	// }
+	// PRINT
+	// METHODS--------------------------------------------------------------------------------------------------------------
+	public String printIntegers(int[] vector) {
+
+		for (int i = 0; i < vector.length; i++) {
+			result = result + vector[i] + " ";
+
+		}
+		return result;
+	}
+
+	public String printDoubles(double[] vector) {
+
+		for (int i = 0; i < vector.length; i++) {
+			result = result + vector[i] + " ";
+
+		}
+		return result;
+	}
+	// GETTER AND
+	// SETTER---------------------------------------------------------------------------------------------------------------
+
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
+	}
+
 }
