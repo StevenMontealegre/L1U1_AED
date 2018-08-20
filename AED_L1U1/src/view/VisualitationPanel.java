@@ -30,12 +30,12 @@ public class VisualitationPanel extends JPanel implements ActionListener {
 		btnToAccept.setActionCommand(TOACCEPT);
 		btnToAccept.addActionListener(this);
 		setLayout(new GridLayout(3, 2));
-		txtGeneratedVector.setBackground(Color.BLUE);
-		txtOrderedVector.setBackground(Color.BLUE);
-		btnToAccept.setBackground(Color.BLUE);
+		txtGeneratedVector.setBackground(Color.CYAN);
+		txtOrderedVector.setBackground(Color.CYAN);
+		btnToAccept.setBackground(Color.CYAN);
 		Font font = new Font("Agency FB", Font.BOLD, 24);
 		btnToAccept.setFont(font);
-		setBackground(Color.BLUE);
+		setBackground(Color.CYAN);
 		add(lbGeneratedVector);
 		add(txtGeneratedVector);
 		add(lbOrderedVector);
