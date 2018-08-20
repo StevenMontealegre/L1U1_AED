@@ -1,13 +1,12 @@
 package model;
 
-import exceptions.ShortLongException;
-
 public class Order {
 	private String result;
 
 	public Order() {
 		// TODO Auto-generated constructor stub
 		setResult("");
+
 	}
 
 	// MERGESORT RECURSIVE
