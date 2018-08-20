@@ -1,6 +1,8 @@
 package model;
 
 public class Order {
+	
+	private double[] array;
 	private String result;
 
 	public Order() {
@@ -9,6 +11,51 @@ public class Order {
 
 	}
 
+	
+	
+	//QUICKSORT RECURSIVE
+	//METHOD-----------------------------------------------------------------------------------------
+	public double[] quickSort( double[] array, int min, int max)
+	{
+		this.array = array;
+		
+		double pivot = array[min];
+		double temporal;
+		int a = min; 
+		int b = max;
+		
+		while(a<b)
+		{
+			while(array[a]<= pivot && a<b)
+			{
+				a++;
+			}
+			while(array[b]>pivot)
+			{
+				b--;
+			}
+			if(a<b)
+			{
+				temporal = array[a];
+				array[a] = array[b];
+				array[b] = temporal;
+			}
+		}
+		
+		array[min] = array[b];
+		array[b] = pivot;
+		if(min < b-1)
+		{
+			quickSort(array, min, b-1);
+		}
+		if(b+1 < max)
+		{
+			quickSort(array, b+1, max);
+		}
+		return array;
+	}
+	
+	
 	// MERGESORT RECURSIVE
 	// METHOD-----------------------------------------------------------------------------------------
 	// Integer values version:
@@ -68,6 +115,12 @@ public class Order {
 		for (int i = 0; i < mer.length; i++)
 			n[or + i] = mer[i];
 	}
+	
+	
+
+	
+	
+	
 	// HEAPSORT RECURSIVE
 	// METHOD:--------------------------------------------------------------------------------------------
 	// For integer values:
@@ -198,4 +251,7 @@ public class Order {
 		this.result = result;
 	}
 
+	
+	
+	
 }

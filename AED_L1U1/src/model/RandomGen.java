@@ -1,13 +1,13 @@
 package model;
 
-public class Random {
+public class RandomGen {
 
 	
 	public static final int INT = 0;
 	public static final int DOUBLE = 1;
 	private double[] array;
 	
-	public Random()
+	public RandomGen()
 	{
 		
 	}
