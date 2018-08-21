@@ -93,4 +93,116 @@ public class GenerationPanel extends JPanel {
 
 	}
 
+	public JLabel getLbNumberElements() {
+		return lbNumberElements;
+	}
+
+	public void setLbNumberElements(JLabel lbNumberElements) {
+		this.lbNumberElements = lbNumberElements;
+	}
+
+	public JLabel getLbLowerBound() {
+		return lbLowerBound;
+	}
+
+	public void setLbLowerBound(JLabel lbLowerBound) {
+		this.lbLowerBound = lbLowerBound;
+	}
+
+	public JLabel getLbUpperBound() {
+		return lbUpperBound;
+	}
+
+	public void setLbUpperBound(JLabel lbUpperBound) {
+		this.lbUpperBound = lbUpperBound;
+	}
+
+	public JLabel getLbDisorderPorcent() {
+		return lbDisorderPorcent;
+	}
+
+	public void setLbDisorderPorcent(JLabel lbDisorderPorcent) {
+		this.lbDisorderPorcent = lbDisorderPorcent;
+	}
+
+	public JLabel getLbManualInput() {
+		return lbManualInput;
+	}
+
+	public void setLbManualInput(JLabel lbManualInput) {
+		this.lbManualInput = lbManualInput;
+	}
+
+	public JTextField getTxtNumberElements() {
+		return txtNumberElements;
+	}
+
+	public void setTxtNumberElements(JTextField txtNumberElements) {
+		this.txtNumberElements = txtNumberElements;
+	}
+
+	public JTextField getTxtLowerBound() {
+		return txtLowerBound;
+	}
+
+	public void setTxtLowerBound(JTextField txtLowerBound) {
+		this.txtLowerBound = txtLowerBound;
+	}
+
+	public JTextField getTxtUpperBound() {
+		return txtUpperBound;
+	}
+
+	public void setTxtUpperBound(JTextField txtUpperBound) {
+		this.txtUpperBound = txtUpperBound;
+	}
+
+	public JTextField getTxtDisorderPorcent() {
+		return txtDisorderPorcent;
+	}
+
+	public void setTxtDisorderPorcent(JTextField txtDisorderPorcent) {
+		this.txtDisorderPorcent = txtDisorderPorcent;
+	}
+
+	public JTextField getTxtManualInput() {
+		return txtManualInput;
+	}
+
+	public void setTxtManualInput(JTextField txtManualInput) {
+		this.txtManualInput = txtManualInput;
+	}
+
+	public JRadioButton getChkRepeatNumbers() {
+		return chkRepeatNumbers;
+	}
+
+	public void setChkRepeatNumbers(JRadioButton chkRepeatNumbers) {
+		this.chkRepeatNumbers = chkRepeatNumbers;
+	}
+
+	public JRadioButton getChkGenerateOrder() {
+		return chkGenerateOrder;
+	}
+
+	public void setChkGenerateOrder(JRadioButton chkGenerateOrder) {
+		this.chkGenerateOrder = chkGenerateOrder;
+	}
+
+	public JRadioButton getChkReverseOrdering() {
+		return chkReverseOrdering;
+	}
+
+	public void setChkReverseOrdering(JRadioButton chkReverseOrdering) {
+		this.chkReverseOrdering = chkReverseOrdering;
+	}
+
+	public JRadioButton getChkRamdonGenerate() {
+		return chkRamdonGenerate;
+	}
+
+	public void setChkRamdonGenerate(JRadioButton chkRamdonGenerate) {
+		this.chkRamdonGenerate = chkRamdonGenerate;
+	}
+
 }

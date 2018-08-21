@@ -187,6 +187,15 @@ public class Order {
 		}
 		return result;
 	}
+
+	public boolean isDecimal(String cad) {
+		try {
+			Double.parseDouble(cad);
+			return true;
+		} catch (NumberFormatException nfe) {
+			return false;
+		}
+	}
 	// GETTER AND
 	// SETTER---------------------------------------------------------------------------------------------------------------
 
