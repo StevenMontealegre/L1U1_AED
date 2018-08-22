@@ -29,6 +29,35 @@ public class MainView extends JFrame {
 		add(visualPanel, BorderLayout.SOUTH);
 	}
 
+	
+	
+	//REQUIREMENTS MENU
+	public void generateSortNumbers(int n, int min, int max)
+	{
+		double[] sorted = model.quickSort(model.generateNumbers(n, min, max), 0, n-1);
+	}
+	
+	public void generateRandomNumbers(int n, int min, int max)
+	{
+		double[] random = model.generateNumbers(n,min,max);
+	}
+	
+	public void generatePercentageSorted(int n, int min, int max, double percentage)
+	{
+		if(percentage>1)
+		{
+			percentage/=( percentage/100);
+		}
+		double[] array = model.quickSort(model.generateNumbers(n, min, max), 0, n-1);
+		array = model.sortPercentage(array, percentage);
+	}
+	
+	public void generateInverseSortNumbers(int n, int min, int max)
+	{
+		double[] array = model.quickSort(model.generateNumbers(n, min, max),0, n-1);
+		array = model.invertArray(array);
+	}
+	
 	public static void main(String[] args) {
 
 		MainView mv = new MainView();

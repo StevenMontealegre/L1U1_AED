@@ -2,15 +2,93 @@ package model;
 
 public class Order {
 	
+	
+	public static final int INT = 0;
+	public static final int DOUBLE = 1;
+	
+	
 	private double[] array;
 	private String result;
+	private int min;
+	private int max;
 
 	public Order() {
 		// TODO Auto-generated constructor stub
 		setResult("");
 
 	}
-
+	
+	// RANDOM GENERATION WITH NO ORDER
+		// METHOD ----------------------------------------------------------------------------------------
+		// It generates randomly an array of int and double numbers into a double array, within an specific range
+		public double[] generateNumbers(int size, int min, int max)
+		{
+			array = new double[size];
+			int type;
+			this.min = min;
+			this.max = max;
+			
+			for(int i = 0; i<size; i++)
+			{
+				type = (int)Math.floor(Math.random()*2);
+				if(type == INT)
+				{
+					int b =  (int)Math.floor(Math.random()*(max-(min+1)) +min);
+					array[i] = b;
+				}
+				else
+				{
+					array[i] = Math.random()*(max-(min+1)) +min;
+				}
+			}
+			return array;
+		}
+		
+	//RANDOM GENERATION WITH % OF SORTED NUMBERS 
+	// It receives as parameter a sorted array and the percentage of disorder than the user wants. 
+	// It changes the times needed, two elements of the array
+	public double[] sortPercentage(double[] array, double percentage)
+	{
+		this.array = array;
+		int k = (int)(array.length*percentage); 
+		
+		
+		int index1;
+		int index2;
+		double temp;
+		for(int i = 0; i<k/2; i++)
+		{
+			index1 = (int) Math.floor(Math.random() +(array.length-1));
+			index2 = (int) Math.floor(Math.random() +(array.length-1));
+			while(index1==index2)
+			{
+				index2 = (int) Math.floor(Math.random() +(array.length-1));
+			}
+			
+			temp = array[index1];
+			array[index1] = array[index2];
+			array[index2] = temp;
+		}
+		
+		return array;
+		
+	}
+	
+	//INVERSE ARRAY METHOD
+	//It receives an array allready sorted and it changes all the position to invert it
+	public double[] invertArray(double[] array)
+	{
+		this.array = array;
+		int n = array.length;
+		double[] inverted = new double[n];
+		
+		for(int i = 0; i<array.length;i++)
+		{
+			inverted[i] = array[n-i-1];
+		}
+		return inverted;
+	}
+	
 	
 	
 	//QUICKSORT RECURSIVE
