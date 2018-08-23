@@ -3,6 +3,10 @@ package model;
 public class Model {
 
 	
+	public static final int MERGE = 1;
+	public static final int QUICK = 2;
+	public static final int HEAP = 3;
+	
 	private Order model;
 	private int action;
 	private int min;
@@ -33,9 +37,9 @@ public class Model {
 		break;
 		case 2: array = generateSortNumbers(n, min, max);
 		break;
-		case 3: array = generatePercentageSorted(action, min, max, percentage);
+		case 3: array = generateInverseSortNumbers(n, min, max);
 		break;
-		case 4: array = generateInverseSortNumbers(n, min, max);
+		case 4: array = generatePercentageSorted(n, min, max, percentage);
 		break;
 		}
 		return array;
@@ -71,6 +75,21 @@ public class Model {
 	{
 		double[] array = model.quickSort(model.generateNumbers(n, min, max),0, n-1);
 		array = model.invertArray(array);
+		return array;
+	}
+	
+	public double[] sort(int mode, double[] array)
+	{
+		
+		switch(mode)
+		{ case MERGE:  array =  model.mergeSort(array);	
+		break;
+		case QUICK:array=  model.quickSort(array,0, n-1);
+		break;
+		case HEAP: array =  model.heapSort(array);
+		break;
+		}
+		
 		return array;
 	}
 

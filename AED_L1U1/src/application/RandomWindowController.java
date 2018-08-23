@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -23,10 +24,11 @@ import view.MainView;
 
 public class RandomWindowController implements Initializable {
 
-
+	ObservableList<String> sortList = FXCollections.observableArrayList("Merge Sort", "Quick Sort", "Heap Sort");
 	
 	private Model model;
 	private int option;
+	private double[] numList;
 	
 	@FXML 
 	private TextField minField;
@@ -48,6 +50,20 @@ public class RandomWindowController implements Initializable {
 	private TextField percentageTxt;
 	@FXML
 	private ListView listView;
+	@FXML 
+	private Button sortBut;
+	@FXML
+	private ChoiceBox sortBox;
+	
+	
+
+
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		sortBox.setItems(sortList);
+		model = new Model();
+	}
 	
 	
 	@FXML
@@ -56,31 +72,77 @@ public class RandomWindowController implements Initializable {
 		int min = Integer.parseInt(minField.getText());
 		int max = Integer.parseInt(maxField.getText());
 		int n = Integer.parseInt(nField.getText());
-		int percentage = Integer.parseInt(percentageTxt.getText());
 		System.out.println("Option: "+option);
-		model = new Model();
-		model.setAction(option, min, max, n, percentage);
-		double[] numbers = model.showNumbers();
+		
+
+		
+		if(percentageBox.isSelected())
+		{
+			int percentage = Integer.parseInt(percentageTxt.getText());
+			model.setAction(option, min, max, n, percentage);
+		} else 
+		{
+			model.setAction(option, min, max, n, 0);
+
+		}
+
+		numList = model.showNumbers();
 		
 		
 		ObservableList numbersList = FXCollections.observableArrayList();
 		numbersList.clear();
 		for(int i = 0; i<n ;i++)
 		{
-			int inte = (int)numbers[i];
-			if((numbers[i]-inte)== 0)
+			int inte = (int)numList[i];
+			if((numList[i]-inte)== 0)
 			{
 				numbersList.add(inte);
 			}
 			else
 			{
-				numbersList.add(numbers[i]);
+				numbersList.add(numList[i]);
 			}
 		}
 		
 		listView.setItems(numbersList);
 	}
 	
+	@FXML 
+	public void actionPerformedSort(ActionEvent event)
+	{
+		
+		String sortMode = (String) sortBox.getValue();
+	
+		if(sortMode.equals("Merge Sort"))
+		{
+			numList = model.sort(1,numList);
+		} else if(sortMode.equals("Quick Sort"))
+		{
+			
+			numList = model.sort(2,numList);
+		}if(sortMode.equals("Heap Sort"));
+		{
+			numList = model.sort(3, numList);
+		}
+		ObservableList numbersList = FXCollections.observableArrayList();
+		numbersList.clear();
+		for(int i = 0; i<numList.length ;i++)
+		{
+			int inte = (int)numList[i];
+			if((numList[i]-inte)== 0)
+			{
+				numbersList.add(inte);
+			}
+			else
+			{
+				numbersList.add(numList[i]);
+			}
+		}
+		
+		listView.setItems(numbersList);
+
+	
+	}
 	
 	
 	@FXML
@@ -132,13 +194,5 @@ public class RandomWindowController implements Initializable {
 		}
 	}
 
-
-
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-	
-		
-	}
 	
 }
