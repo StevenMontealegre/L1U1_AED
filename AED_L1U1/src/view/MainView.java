@@ -12,6 +12,7 @@ public class MainView extends JFrame {
 	private SelectionPanel selecPanel;
 	private VisualitationPanel visualPanel;
 	private Order model;
+	private double[] origenVector;
 
 	public MainView() {
 		// TODO Auto-generated constructor stub
@@ -27,16 +28,17 @@ public class MainView extends JFrame {
 		add(generPanel, BorderLayout.NORTH);
 		add(selecPanel, BorderLayout.CENTER);
 		add(visualPanel, BorderLayout.SOUTH);
+
 	}
 
-	public int[] getVector() {
+	public double[] getTransformVector() {
 		String[] vector = generPanel.getTxtManualInput().getText().split(",");
-		int[] arra = new int[vector.length];
+		origenVector = new double[vector.length];
 		for (int i = 0; i < vector.length; i++) {
-			arra[i] = Integer.parseInt(vector[i]);
+			origenVector[i] = Double.parseDouble(vector[i]);
 
 		}
-		return arra;
+		return origenVector;
 	}
 
 	public static void main(String[] args) {

@@ -89,15 +89,26 @@ public class VisualitationPanel extends JPanel implements ActionListener {
 		return TOACCEPT;
 	}
 
+	@SuppressWarnings("static-access")
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		String command = e.getActionCommand();
 		if (command.equalsIgnoreCase(TOACCEPT)) {
-			System.out.println("ACEPTAR IS OK");
-			main.getVisualPanel().getTxtGeneratedVector().setText(main.getSelecPanel().getDisorderChain());
-			main.getVisualPanel().getTxtOrderedVector().setText(main.getSelecPanel().getOrderedChain());
+
+			if (main.getSelecPanel().getChkMergeSort().isSelected()) {
+				txtOrderedVector
+						.setText(main.getModel().printVector(main.getModel().mergeSort(main.getTransformVector())));
+
+			}
+			if (main.getSelecPanel().getChkHeapSort().isSelected()) {
+				txtOrderedVector
+						.setText(main.getModel().printVector(main.getModel().heapSort(main.getTransformVector())));
+
+			}
+
 		}
+
 	}
 
 }

@@ -15,7 +15,6 @@ import javax.swing.JRadioButton;
 public class SelectionPanel extends JPanel implements ActionListener {
 
 	private JLabel lbChooseMethod;
-	private String orderedChain, disorderChain;
 	private JRadioButton chkQuickSort, chkMergeSort, chkHeapSort;
 	public final static String QUICK = "quick";
 	public final static String MERGE = "merge";
@@ -55,8 +54,6 @@ public class SelectionPanel extends JPanel implements ActionListener {
 		setBackground(Color.CYAN);
 		add(lbChooseMethod, BorderLayout.NORTH);
 		add(panelAux1, BorderLayout.CENTER);
-		orderedChain = "";
-		disorderChain = "";
 
 	}
 
@@ -66,22 +63,6 @@ public class SelectionPanel extends JPanel implements ActionListener {
 
 	public void setLbChooseMethod(JLabel lbChooseMethod) {
 		this.lbChooseMethod = lbChooseMethod;
-	}
-
-	public String getOrderedChain() {
-		return orderedChain;
-	}
-
-	public void setOrderedChain(String orderedChain) {
-		this.orderedChain = orderedChain;
-	}
-
-	public String getDisorderChain() {
-		return disorderChain;
-	}
-
-	public void setDisorderChain(String disorderChain) {
-		this.disorderChain = disorderChain;
 	}
 
 	public JRadioButton getChkQuickSort() {
@@ -144,20 +125,27 @@ public class SelectionPanel extends JPanel implements ActionListener {
 		this.doubleVector = doubleVector;
 	}
 
+	@SuppressWarnings("static-access")
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		String command = e.getActionCommand();
 		if (command.equalsIgnoreCase(MERGE)) {
-			int[] vect = main.getVector();
 
-			System.out.println(main.getModel().printIntegers(vect));
+			main.getVisualPanel().getTxtGeneratedVector()
+					.setText(main.getModel().printVector(main.getTransformVector()));
 
 		}
 		if (command.equalsIgnoreCase(HEAP)) {
 
+			main.getVisualPanel().getTxtGeneratedVector()
+					.setText(main.getModel().printVector(main.getTransformVector()));
+
 		}
 		if (command.equalsIgnoreCase(QUICK)) {
+
+			main.getVisualPanel().getTxtGeneratedVector()
+					.setText(main.getModel().printVector(main.getTransformVector()));
 
 		}
 
