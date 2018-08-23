@@ -138,6 +138,7 @@ public class SelectionPanel extends JPanel implements ActionListener {
 			try {
 				main.getVisualPanel().getTxtGeneratedVector()
 						.setText(main.getModel().printVector(main.getTransformVector()));
+
 			} catch (EmptyBoxException e1) {
 				// TODO Auto-generated catch block
 				JOptionPane.showMessageDialog(null, e1.getMessage(), "Invalid input", JOptionPane.INFORMATION_MESSAGE);

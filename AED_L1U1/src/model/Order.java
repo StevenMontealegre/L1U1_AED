@@ -118,6 +118,25 @@ public class Order {
 		}
 
 	}
+
+	public double[] getRamdonNumbersWithoutRepetion(int tamanio, int cotaSuperior) {
+
+		double[] ramdonVector = new double[tamanio];
+		for (int i = 0; i < ramdonVector.length; i++) {
+			double number = ((Math.random() * cotaSuperior)) + 1;
+			number = Math.rint(number * 100) / 100;
+			ramdonVector[i] = number;
+			for (int j = 1; j < ramdonVector.length; j++) {
+				if (number != ramdonVector[j - 1]) {
+					ramdonVector[i] = number;
+				}
+			}
+
+		}
+		return ramdonVector;
+
+	}
+
 	// GETTER AND
 	// SETTER---------------------------------------------------------------------------------------------------------------
 
