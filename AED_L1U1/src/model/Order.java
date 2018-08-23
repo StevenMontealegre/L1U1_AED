@@ -18,6 +18,11 @@ public class Order {
 
 	}
 	
+	public void say()
+	{
+		System.out.println("Yes");
+	}
+	
 	// RANDOM GENERATION WITH NO ORDER
 		// METHOD ----------------------------------------------------------------------------------------
 		// It generates randomly an array of int and double numbers into a double array, within an specific range
