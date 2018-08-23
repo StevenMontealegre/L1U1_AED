@@ -29,7 +29,7 @@ public class MainView extends JFrame {
 		add(visualPanel, BorderLayout.SOUTH);
 	}
 
-<<<<<<< HEAD
+
 	
 	
 	//REQUIREMENTS MENU
@@ -58,19 +58,7 @@ public class MainView extends JFrame {
 		double[] array = model.quickSort(model.generateNumbers(n, min, max),0, n-1);
 		array = model.invertArray(array);
 	}
-	
-=======
-	public int[] getVector() {
-		String[] vector = generPanel.getTxtManualInput().getText().split(",");
-		int[] arra = new int[vector.length];
-		for (int i = 0; i < vector.length; i++) {
-			arra[i] = Integer.parseInt(vector[i]);
 
-		}
-		return arra;
-	}
-
->>>>>>> refs/remotes/origin/master
 	public static void main(String[] args) {
 
 		MainView mv = new MainView();
@@ -108,6 +96,14 @@ public class MainView extends JFrame {
 
 	public void setVisualPanel(VisualitationPanel visualPanel) {
 		this.visualPanel = visualPanel;
+	}
+
+
+
+
+	public int[] getVector() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
