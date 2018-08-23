@@ -1,5 +1,7 @@
 package model;
 
+import exceptions.EmptyBoxException;
+
 public class Order {
 	private String result;
 
@@ -103,13 +105,18 @@ public class Order {
 		return result;
 	}
 
-	public boolean isDecimal(String cad) {
-		try {
-			Double.parseDouble(cad);
-			return true;
-		} catch (NumberFormatException nfe) {
-			return false;
+	public void isDecimal(String[] cad) throws EmptyBoxException {
+
+		for (int i = 0; i < cad.length; i++) {
+			try {
+				Double.parseDouble(cad[i]);
+
+			} catch (NumberFormatException nfe) {
+				throw new EmptyBoxException();
+			}
+
 		}
+
 	}
 	// GETTER AND
 	// SETTER---------------------------------------------------------------------------------------------------------------

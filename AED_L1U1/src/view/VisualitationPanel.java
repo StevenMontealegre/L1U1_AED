@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import exceptions.EmptyBoxException;
+
 public class VisualitationPanel extends JPanel implements ActionListener {
 	private JLabel lbGeneratedVector, lbOrderedVector;
 	private JTextField txtGeneratedVector, txtOrderedVector;
@@ -97,15 +99,27 @@ public class VisualitationPanel extends JPanel implements ActionListener {
 		if (command.equalsIgnoreCase(TOACCEPT)) {
 
 			if (main.getSelecPanel().getChkMergeSort().isSelected()) {
-				txtOrderedVector
-						.setText(main.getModel().printVector(main.getModel().mergeSort(main.getTransformVector())));
+				try {
+					txtOrderedVector
+							.setText(main.getModel().printVector(main.getModel().mergeSort(main.getTransformVector())));
+				} catch (EmptyBoxException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 
 			}
+
 			if (main.getSelecPanel().getChkHeapSort().isSelected()) {
-				txtOrderedVector
-						.setText(main.getModel().printVector(main.getModel().heapSort(main.getTransformVector())));
+				try {
+					txtOrderedVector
+							.setText(main.getModel().printVector(main.getModel().heapSort(main.getTransformVector())));
+				} catch (EmptyBoxException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 
 			}
+			main.getGenerPanel().refreshInputManual();
 
 		}
 

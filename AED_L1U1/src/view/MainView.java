@@ -5,6 +5,7 @@ import java.awt.Color;
 
 import javax.swing.JFrame;
 
+import exceptions.EmptyBoxException;
 import model.Order;
 
 public class MainView extends JFrame {
@@ -31,8 +32,9 @@ public class MainView extends JFrame {
 
 	}
 
-	public double[] getTransformVector() {
+	public double[] getTransformVector() throws EmptyBoxException {
 		String[] vector = generPanel.getTxtManualInput().getText().split(",");
+		model.isDecimal(vector);
 		origenVector = new double[vector.length];
 		for (int i = 0; i < vector.length; i++) {
 			origenVector[i] = Double.parseDouble(vector[i]);

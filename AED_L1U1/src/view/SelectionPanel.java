@@ -9,8 +9,11 @@ import java.awt.event.ActionListener;
 import javax.swing.ButtonGroup;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+
+import exceptions.EmptyBoxException;
 
 public class SelectionPanel extends JPanel implements ActionListener {
 
@@ -132,20 +135,36 @@ public class SelectionPanel extends JPanel implements ActionListener {
 		String command = e.getActionCommand();
 		if (command.equalsIgnoreCase(MERGE)) {
 
-			main.getVisualPanel().getTxtGeneratedVector()
-					.setText(main.getModel().printVector(main.getTransformVector()));
+			try {
+				main.getVisualPanel().getTxtGeneratedVector()
+						.setText(main.getModel().printVector(main.getTransformVector()));
+			} catch (EmptyBoxException e1) {
+				// TODO Auto-generated catch block
+				JOptionPane.showMessageDialog(null, e1.getMessage(), "Invalid input", JOptionPane.INFORMATION_MESSAGE);
+
+			}
 
 		}
 		if (command.equalsIgnoreCase(HEAP)) {
 
-			main.getVisualPanel().getTxtGeneratedVector()
-					.setText(main.getModel().printVector(main.getTransformVector()));
+			try {
+				main.getVisualPanel().getTxtGeneratedVector()
+						.setText(main.getModel().printVector(main.getTransformVector()));
+			} catch (EmptyBoxException e1) {
+				// TODO Auto-generated catch block
+				JOptionPane.showMessageDialog(null, e1.getMessage(), "Invalid input", JOptionPane.INFORMATION_MESSAGE);
+			}
 
 		}
 		if (command.equalsIgnoreCase(QUICK)) {
 
-			main.getVisualPanel().getTxtGeneratedVector()
-					.setText(main.getModel().printVector(main.getTransformVector()));
+			try {
+				main.getVisualPanel().getTxtGeneratedVector()
+						.setText(main.getModel().printVector(main.getTransformVector()));
+			} catch (EmptyBoxException e1) {
+				// TODO Auto-generated catch block
+				JOptionPane.showMessageDialog(null, e1.getMessage(), "Invalid input", JOptionPane.INFORMATION_MESSAGE);
+			}
 
 		}
 
