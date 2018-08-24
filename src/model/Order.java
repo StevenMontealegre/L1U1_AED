@@ -226,22 +226,6 @@ public class Order {
 		}
 	}
 
-<<<<<<< HEAD
-
-	// PRINT
-	// METHODS--------------------------------------------------------------------------------------------------------------
-	public String printIntegers(int[] vector) {
-=======
-	public String printVector(double[] vector) {
->>>>>>> refs/remotes/origin/master
-
-		for (int i = 0; i < vector.length; i++) {
-			result = result + vector[i] + " ";
-
-		}
-		return result;
-	}
-
 	public void isDecimal(String[] cad) throws EmptyBoxException {
 
 		for (int i = 0; i < cad.length; i++) {

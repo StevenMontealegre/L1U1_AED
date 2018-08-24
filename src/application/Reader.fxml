@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ReaderController">
+   <children>
+      <GridPane layoutX="150.0" layoutY="265.0" prefHeight="600.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ListView fx:id="list" prefHeight="489.0" prefWidth="253.0" GridPane.columnIndex="1" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <Label layoutX="20.0" layoutY="14.0" prefHeight="146.0" prefWidth="216.0" text="Generate your own list of numbers to sort" textAlignment="CENTER" textFill="#ff0505" wrapText="true">
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutY="95.0" prefHeight="81.0" prefWidth="250.0" text="Write a number and press add. When you finish, choose a Sort Method." textAlignment="CENTER" wrapText="true" />
+                  <Button fx:id="addBut" layoutX="89.0" layoutY="329.0" mnemonicParsing="false" onAction="#actionPerfomed" prefHeight="35.0" prefWidth="73.0" style="-fx-background-color: #b4d6c3;" text="Add">
+                     <font>
+                        <Font name="Century Gothic" size="13.0" />
+                     </font>
+                     <effect>
+                        <Glow>
+                           <input>
+                              <DropShadow />
+                           </input>
+                        </Glow>
+                     </effect></Button>
+                  <TextField fx:id="numText" layoutX="54.0" layoutY="275.0" prefHeight="35.0" prefWidth="150.0" promptText="Write a number" />
+                  <RadioButton fx:id="quickBut" layoutX="20.0" layoutY="516.0" mnemonicParsing="false" onAction="#handleQuick" text="Quick Sort">
+                     <font>
+                        <Font name="Century Gothic" size="13.0" />
+                     </font>
+                  </RadioButton>
+                  <Separator layoutY="401.0" prefHeight="6.0" prefWidth="250.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="401.0" />
+                  <Label layoutX="87.0" layoutY="414.0" text="SORT METHOD" textFill="#0b29c3">
+                     <font>
+                        <Font name="Century Gothic" size="13.0" />
+                     </font>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Label>
+                  <RadioButton fx:id="mergeBut" layoutX="20.0" layoutY="478.0" mnemonicParsing="false" onAction="#handleMerge" text="Merge Sort">
+                     <font>
+                        <Font name="Century Gothic" size="13.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="heapBut" layoutX="20.0" layoutY="554.0" mnemonicParsing="false" onAction="#handleHeap" text="Heap Sort">
+                     <font>
+                        <Font name="Century Gothic" size="13.0" />
+                     </font>
+                  </RadioButton>
+                  <Button fx:id="sortBut" layoutX="152.0" layoutY="499.0" mnemonicParsing="false" onAction="#actionPerfomedSort" prefHeight="35.0" prefWidth="73.0" style="-fx-background-color: #e1b8e4;" text="SORT">
+                     <font>
+                        <Font name="Century Gothic" size="13.0" />
+                     </font>
+                     <effect>
+                        <Glow>
+                           <input>
+                              <DropShadow />
+                           </input>
+                        </Glow>
+                     </effect>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

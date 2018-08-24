@@ -32,7 +32,7 @@ public class MainView extends JFrame {
 
 	}
 
-<<<<<<< HEAD
+
 
 	
 	
@@ -40,7 +40,8 @@ public class MainView extends JFrame {
 	public void generateSortNumbers(int n, int min, int max)
 	{
 		double[] sorted = model.quickSort(model.generateNumbers(n, min, max), 0, n-1);
-=======
+	}
+
 	public double[] getTransformVector() throws EmptyBoxException {
 		String[] vector = generPanel.getTxtManualInput().getText().split(",");
 		model.isDecimal(vector);
@@ -50,7 +51,6 @@ public class MainView extends JFrame {
 
 		}
 		return origenVector;
->>>>>>> refs/remotes/origin/master
 	}
 	
 	public void generateRandomNumbers(int n, int min, int max)
