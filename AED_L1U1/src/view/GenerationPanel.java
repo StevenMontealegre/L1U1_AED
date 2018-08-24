@@ -205,4 +205,8 @@ public class GenerationPanel extends JPanel {
 		this.chkRamdonGenerate = chkRamdonGenerate;
 	}
 
+	public void refreshInputManual() {
+		txtManualInput.setText("");
+	}
+
 }

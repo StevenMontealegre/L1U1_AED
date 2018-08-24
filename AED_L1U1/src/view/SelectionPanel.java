@@ -9,13 +9,15 @@ import java.awt.event.ActionListener;
 import javax.swing.ButtonGroup;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+
+import exceptions.EmptyBoxException;
 
 public class SelectionPanel extends JPanel implements ActionListener {
 
 	private JLabel lbChooseMethod;
-	private String orderedChain, disorderChain;
 	private JRadioButton chkQuickSort, chkMergeSort, chkHeapSort;
 	public final static String QUICK = "quick";
 	public final static String MERGE = "merge";
@@ -55,8 +57,6 @@ public class SelectionPanel extends JPanel implements ActionListener {
 		setBackground(Color.CYAN);
 		add(lbChooseMethod, BorderLayout.NORTH);
 		add(panelAux1, BorderLayout.CENTER);
-		orderedChain = "";
-		disorderChain = "";
 
 	}
 
@@ -66,22 +66,6 @@ public class SelectionPanel extends JPanel implements ActionListener {
 
 	public void setLbChooseMethod(JLabel lbChooseMethod) {
 		this.lbChooseMethod = lbChooseMethod;
-	}
-
-	public String getOrderedChain() {
-		return orderedChain;
-	}
-
-	public void setOrderedChain(String orderedChain) {
-		this.orderedChain = orderedChain;
-	}
-
-	public String getDisorderChain() {
-		return disorderChain;
-	}
-
-	public void setDisorderChain(String disorderChain) {
-		this.disorderChain = disorderChain;
 	}
 
 	public JRadioButton getChkQuickSort() {
@@ -144,20 +128,44 @@ public class SelectionPanel extends JPanel implements ActionListener {
 		this.doubleVector = doubleVector;
 	}
 
+	@SuppressWarnings("static-access")
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		String command = e.getActionCommand();
 		if (command.equalsIgnoreCase(MERGE)) {
-			int[] vect = main.getVector();
 
-			System.out.println(main.getModel().printIntegers(vect));
+			try {
+				main.getVisualPanel().getTxtGeneratedVector()
+						.setText(main.getModel().printVector(main.getTransformVector()));
+
+			} catch (EmptyBoxException e1) {
+				// TODO Auto-generated catch block
+				JOptionPane.showMessageDialog(null, e1.getMessage(), "Invalid input", JOptionPane.INFORMATION_MESSAGE);
+
+			}
 
 		}
 		if (command.equalsIgnoreCase(HEAP)) {
 
+			try {
+				main.getVisualPanel().getTxtGeneratedVector()
+						.setText(main.getModel().printVector(main.getTransformVector()));
+			} catch (EmptyBoxException e1) {
+				// TODO Auto-generated catch block
+				JOptionPane.showMessageDialog(null, e1.getMessage(), "Invalid input", JOptionPane.INFORMATION_MESSAGE);
+			}
+
 		}
 		if (command.equalsIgnoreCase(QUICK)) {
+
+			try {
+				main.getVisualPanel().getTxtGeneratedVector()
+						.setText(main.getModel().printVector(main.getTransformVector()));
+			} catch (EmptyBoxException e1) {
+				// TODO Auto-generated catch block
+				JOptionPane.showMessageDialog(null, e1.getMessage(), "Invalid input", JOptionPane.INFORMATION_MESSAGE);
+			}
 
 		}
 

@@ -5,6 +5,7 @@ import java.awt.Color;
 
 import javax.swing.JFrame;
 
+import exceptions.EmptyBoxException;
 import model.Order;
 
 public class MainView extends JFrame {
@@ -12,6 +13,7 @@ public class MainView extends JFrame {
 	private SelectionPanel selecPanel;
 	private VisualitationPanel visualPanel;
 	private Order model;
+	private double[] origenVector;
 
 	public MainView() {
 		// TODO Auto-generated constructor stub
@@ -27,8 +29,10 @@ public class MainView extends JFrame {
 		add(generPanel, BorderLayout.NORTH);
 		add(selecPanel, BorderLayout.CENTER);
 		add(visualPanel, BorderLayout.SOUTH);
+
 	}
 
+<<<<<<< HEAD
 
 	
 	
@@ -36,6 +40,17 @@ public class MainView extends JFrame {
 	public void generateSortNumbers(int n, int min, int max)
 	{
 		double[] sorted = model.quickSort(model.generateNumbers(n, min, max), 0, n-1);
+=======
+	public double[] getTransformVector() throws EmptyBoxException {
+		String[] vector = generPanel.getTxtManualInput().getText().split(",");
+		model.isDecimal(vector);
+		origenVector = new double[vector.length];
+		for (int i = 0; i < vector.length; i++) {
+			origenVector[i] = Double.parseDouble(vector[i]);
+
+		}
+		return origenVector;
+>>>>>>> refs/remotes/origin/master
 	}
 	
 	public void generateRandomNumbers(int n, int min, int max)

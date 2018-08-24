@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import exceptions.EmptyBoxException;
+
 public class VisualitationPanel extends JPanel implements ActionListener {
 	private JLabel lbGeneratedVector, lbOrderedVector;
 	private JTextField txtGeneratedVector, txtOrderedVector;
@@ -89,15 +91,38 @@ public class VisualitationPanel extends JPanel implements ActionListener {
 		return TOACCEPT;
 	}
 
+	@SuppressWarnings("static-access")
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		String command = e.getActionCommand();
 		if (command.equalsIgnoreCase(TOACCEPT)) {
-			System.out.println("ACEPTAR IS OK");
-			main.getVisualPanel().getTxtGeneratedVector().setText(main.getSelecPanel().getDisorderChain());
-			main.getVisualPanel().getTxtOrderedVector().setText(main.getSelecPanel().getOrderedChain());
+
+			if (main.getSelecPanel().getChkMergeSort().isSelected()) {
+				try {
+					txtOrderedVector
+							.setText(main.getModel().printVector(main.getModel().mergeSort(main.getTransformVector())));
+				} catch (EmptyBoxException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+			}
+
+			if (main.getSelecPanel().getChkHeapSort().isSelected()) {
+				try {
+					txtOrderedVector
+							.setText(main.getModel().printVector(main.getModel().heapSort(main.getTransformVector())));
+				} catch (EmptyBoxException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+			}
+			main.getGenerPanel().refreshInputManual();
+
 		}
+
 	}
 
 }

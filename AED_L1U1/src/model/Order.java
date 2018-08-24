@@ -1,5 +1,7 @@
 package model;
 
+import exceptions.EmptyBoxException;
+
 public class Order {
 	
 	
@@ -13,6 +15,7 @@ public class Order {
 	private int max;
 
 	public Order() {
+
 		// TODO Auto-generated constructor stub
 		setResult("");
 
@@ -223,10 +226,14 @@ public class Order {
 		}
 	}
 
+<<<<<<< HEAD
 
 	// PRINT
 	// METHODS--------------------------------------------------------------------------------------------------------------
 	public String printIntegers(int[] vector) {
+=======
+	public String printVector(double[] vector) {
+>>>>>>> refs/remotes/origin/master
 
 		for (int i = 0; i < vector.length; i++) {
 			result = result + vector[i] + " ";
@@ -235,23 +242,38 @@ public class Order {
 		return result;
 	}
 
-	public String printDoubles(double[] vector) {
+	public void isDecimal(String[] cad) throws EmptyBoxException {
 
-		for (int i = 0; i < vector.length; i++) {
-			result = result + vector[i] + " ";
+		for (int i = 0; i < cad.length; i++) {
+			try {
+				Double.parseDouble(cad[i]);
+
+			} catch (NumberFormatException nfe) {
+				throw new EmptyBoxException();
+			}
 
 		}
-		return result;
+
 	}
 
-	public boolean isDecimal(String cad) {
-		try {
-			Double.parseDouble(cad);
-			return true;
-		} catch (NumberFormatException nfe) {
-			return false;
+	public double[] getRamdonNumbersWithoutRepetion(int tamanio, int cotaSuperior) {
+
+		double[] ramdonVector = new double[tamanio];
+		for (int i = 0; i < ramdonVector.length; i++) {
+			double number = ((Math.random() * cotaSuperior)) + 1;
+			number = Math.rint(number * 100) / 100;
+			ramdonVector[i] = number;
+			for (int j = 1; j < ramdonVector.length; j++) {
+				if (number != ramdonVector[j - 1]) {
+					ramdonVector[i] = number;
+				}
+			}
+
 		}
+		return ramdonVector;
+
 	}
+
 	// GETTER AND
 	// SETTER---------------------------------------------------------------------------------------------------------------
 
