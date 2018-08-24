@@ -29,17 +29,28 @@ public class Model {
 		this.percentage = percentage;
 	}
 	
-	public double[] showNumbers()
+	public double[] showNumbers(boolean rep)
 	{
 		double[] array = new double[n];
+		if(rep)
+		{
+			System.out.println("Generated non repeated" );
+
+			array = model.getRamdonNumbersWithoutRepetion(n, max, min);
+		}else 
+		{
+			System.out.println("Generated  repeated" );
+			array =model.generateNumbers(n, min, max);
+		}
+		
 		switch(action) {
-		case 1: array =generateRandomNumbers(n, min, max);
+		case 1: array = array;
 		break;
-		case 2: array = generateSortNumbers(n, min, max);
+		case 2: array = generateSortNumbers(array,n, min, max);
 		break;
-		case 3: array = generateInverseSortNumbers(n, min, max);
+		case 3: array = generateInverseSortNumbers(array,n, min, max);
 		break;
-		case 4: array = generatePercentageSorted(n, min, max, percentage);
+		case 4: array = generatePercentageSorted(array,n, min, max, percentage);
 		break;
 		}
 		return array;
@@ -47,44 +58,39 @@ public class Model {
 	}
 	
 	//REQUIREMENTS MENU
-	public double[] generateSortNumbers(int n, int min, int max)
+	public double[] generateSortNumbers(double[] array,int n, int min, int max)
 	{
-		double[] sorted = model.quickSort(model.generateNumbers(n, min, max), 0, n-1);
+		double[] sorted = model.quickSort(array, 0, n-1);
 		return sorted;
 		
 	}
 	
-	public double[] generateRandomNumbers(int n, int min, int max)
-	{
-		double[] random = model.generateNumbers(n,min,max);
-		return random;
-	}
 	
-	public double[] generatePercentageSorted(int n, int min, int max, double percentage)
+	public double[] generatePercentageSorted(double[] array,int n, int min, int max, double percentage)
 	{
 		if(percentage>1)
 		{
 			percentage/=( percentage/100);
 		}
-		double[] array = model.quickSort(model.generateNumbers(n, min, max), 0, n-1);
-		array = model.sortPercentage(array, percentage);
+		double[] array2 = model.quickSort(array, 0, n-1);
+		array = model.sortPercentage(array2, percentage);
 		return array;
 	}
 	
-	public double[] generateInverseSortNumbers(int n, int min, int max)
+	public double[] generateInverseSortNumbers(double[] array,int n, int min, int max)
 	{
-		double[] array = model.quickSort(model.generateNumbers(n, min, max),0, n-1);
-		array = model.invertArray(array);
+		double[] array2 = model.quickSort(array,0, n-1);
+		array2 = model.invertArray(array2);
 		return array;
 	}
 	
-	public double[] sort(int mode, double[] array)
+	public double[] sort(int mode, double[] a)
 	{
-		
+		double[] array = a;
 		switch(mode)
 		{ case MERGE:  array =  model.mergeSort(array);	
 		break;
-		case QUICK:array=  model.quickSort(array,0, n-1);
+		case QUICK:array=  model.quickSort(array,0, array.length-1);
 		break;
 		case HEAP: array =  model.heapSort(array);
 		break;

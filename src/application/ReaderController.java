@@ -45,8 +45,6 @@ public class ReaderController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 		sortList = FXCollections.observableArrayList();
-		sortList.add(4);
-		sortList.add(34.9);
 		list.setItems(sortList);
 		model = new Model();
 		numbers = new ArrayList<>();
@@ -61,6 +59,7 @@ public class ReaderController implements Initializable {
 		numbers.add(value);
 		sortList.add(value);
 		list.setItems(sortList);
+		numText.setText("");
 	}
 
 	
@@ -70,7 +69,9 @@ public class ReaderController implements Initializable {
 	{
 		System.out.println("sort");
 		double[] array = new double[numbers.size()];
-		for(int i = 0;i<sortList.size()-1;i++)
+
+		System.out.println(numbers.size());
+		for(int i = 0;i<numbers.size();i++)
 		{
 			System.out.println(numbers.get(i));
 			array[i]= numbers.get(i);

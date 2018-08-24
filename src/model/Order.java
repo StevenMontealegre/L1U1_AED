@@ -240,11 +240,11 @@ public class Order {
 
 	}
 
-	public double[] getRamdonNumbersWithoutRepetion(int tamanio, int cotaSuperior) {
+	public double[] getRamdonNumbersWithoutRepetion(int tamanio, int cotaSuperior, int cotaInferior) {
 
 		double[] ramdonVector = new double[tamanio];
 		for (int i = 0; i < ramdonVector.length; i++) {
-			double number = ((Math.random() * cotaSuperior)) + 1;
+			double number = ((Math.random() * cotaSuperior)) + cotaInferior;
 			number = Math.rint(number * 100) / 100;
 			ramdonVector[i] = number;
 			for (int j = 1; j < ramdonVector.length; j++) {

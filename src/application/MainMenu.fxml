@@ -3,20 +3,32 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainMenuController">
    <children>
       <AnchorPane layoutX="-161.0" layoutY="-187.0" prefHeight="413.0" prefWidth="635.0" style="-fx-background-color: #D8BFD8;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="185.0" layoutY="-43.0" prefHeight="160.0" prefWidth="362.0" style="-fx-background-color: #D8BFD8;" text="SORT NUMBERS" textFill="#094dc9" wrapText="true">
+            <Label layoutX="185.0" layoutY="-43.0" prefHeight="160.0" prefWidth="362.0" style="-fx-background-color: #D8BFD8;" text="SORT NUMBERS" wrapText="true">
                <font>
                   <Font name="Century Gothic" size="48.0" />
                </font>
+               <textFill>
+                  <LinearGradient endX="0.6190476190476191" endY="0.7285714285714286" startX="0.6285714285714286" startY="0.23809523809523814">
+                     <stops>
+                        <Stop color="#2f0415" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
             </Label>
             <GridPane layoutY="97.0" prefHeight="312.0" prefWidth="635.0">
               <columnConstraints>
@@ -54,6 +66,14 @@
                         </Button>
                      </children>
                   </GridPane>
+                  <ImageView fitHeight="318.0" fitWidth="704.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Design%20documents/binary.png" />
+                     </image>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </ImageView>
                </children>
             </GridPane>
          </children>

@@ -20,7 +20,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Model;
 import model.Order;
-import view.MainView;
 
 public class RandomWindowController implements Initializable {
 
@@ -46,6 +45,8 @@ public class RandomWindowController implements Initializable {
 	private CheckBox invertedBox;
 	@FXML 
 	private CheckBox percentageBox;
+	@FXML 
+	private CheckBox repeatedBox;
 	@FXML 
 	private TextField percentageTxt;
 	@FXML
@@ -86,7 +87,7 @@ public class RandomWindowController implements Initializable {
 
 		}
 
-		numList = model.showNumbers();
+		numList = model.showNumbers(repeatedBox.isSelected());
 		
 		
 		ObservableList numbersList = FXCollections.observableArrayList();
