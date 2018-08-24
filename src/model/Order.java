@@ -10,21 +10,14 @@ public class Order {
 	
 	
 	private double[] array;
-	private String result;
 	private int min;
 	private int max;
 
 	public Order() {
 
-		// TODO Auto-generated constructor stub
-		setResult("");
 
 	}
 	
-	public void say()
-	{
-		System.out.println("Yes");
-	}
 	
 	// RANDOM GENERATION WITH NO ORDER
 		// METHOD ----------------------------------------------------------------------------------------
@@ -226,19 +219,7 @@ public class Order {
 		}
 	}
 
-	public void isDecimal(String[] cad) throws EmptyBoxException {
 
-		for (int i = 0; i < cad.length; i++) {
-			try {
-				Double.parseDouble(cad[i]);
-
-			} catch (NumberFormatException nfe) {
-				throw new EmptyBoxException();
-			}
-
-		}
-
-	}
 
 	public double[] getRamdonNumbersWithoutRepetion(int tamanio, int cotaSuperior, int cotaInferior) {
 
@@ -257,19 +238,5 @@ public class Order {
 		return ramdonVector;
 
 	}
-
-	// GETTER AND
-	// SETTER---------------------------------------------------------------------------------------------------------------
-
-	public String getResult() {
-		return result;
-	}
-
-	public void setResult(String result) {
-		this.result = result;
-	}
-
-	
-	
-	
 }
+
