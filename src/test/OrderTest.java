@@ -139,20 +139,20 @@ public class OrderTest extends TestCase{
 
 	}
 
-	@SuppressWarnings("static-access")
-	@Test
-	void testFailOne() {
-		setupSceneOne();
-		String[] actual = {};
-		try {
-			model.isDecimal(actual);
-			fail("Se esperaba excepcion EmptyBoxException");
-		} catch (EmptyBoxException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
+//	@SuppressWarnings("static-access")
+//	@Test
+//	void testFailOne() {
+//		setupSceneOne();
+//		String[] actual = {};
+//		try {
+//			model.isDecimal(actual);
+//			fail("Se esperaba excepcion EmptyBoxException");
+//		} catch (EmptyBoxException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//
+//	}
 
 }
 
